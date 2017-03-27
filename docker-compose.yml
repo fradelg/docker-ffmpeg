@@ -1,0 +1,10 @@
+version: "2"
+services:
+  ffmpeg:
+    build: .
+    privileged: true
+    command: ffmpeg -f v4l2 -framerate 25 -video_size 640x480 -i /dev/video0 /output/video.mkv
+    volumes:
+      - "./:/output"
+    devices:
+      - "/dev/video0:/dev/video0"
